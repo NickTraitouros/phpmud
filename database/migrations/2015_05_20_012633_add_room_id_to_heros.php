@@ -25,8 +25,8 @@ class AddRoomIdToHeros extends Migration {
 	public function down()
 	{
 		Schema::table('heros', function($table){
-			$table->dropColumn('room_id');
 			$table->dropForeign('heros_room_id_foreign');
+			$table->dropColumn('room_id');
 		});
 	}
 

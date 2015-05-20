@@ -18,14 +18,13 @@ class CreateRoomsTable extends Migration {
 			$table->integer('map_id')->unsigned();
 			$table->integer('x');
 			$table->integer('y');
-			$table->integer('description');
+			$table->text('description');
 			$table->timestamps();
 		});
 
 		Schema::table('rooms', function($table) {
 	        $table->foreign('map_id')->references('id')->on('maps');
 		});
-
 	}
 
 
