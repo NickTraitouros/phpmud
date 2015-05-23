@@ -4,7 +4,7 @@ function showRoom(x,y,map_id) {
 
     $.ajax(
         {
-         url: "/rooms/show/"+x+"/"+y+"/"+map_id,
+         url: "builder/rooms/show/"+x+"/"+y+"/"+map_id,
          async: true,
          success: function(result){
         $("#edit").html(result);

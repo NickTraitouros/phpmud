@@ -103,7 +103,7 @@ class RoomController extends Controller {
                                     ->first();
 
         if ($room == NULL) {
-            return redirect("rooms/create/$x/$y/$mapId");
+            return redirect("builder/rooms/create/$x/$y/$mapId");
         }
 
         return redirect('rooms/' . $room->id . '/edit');
