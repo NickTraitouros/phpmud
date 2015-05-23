@@ -38,9 +38,9 @@ class RoomController extends Controller {
 
 		 $room = new \App\Room;
 		 $room->fill($request->input())->save();
-		 $room->save(\Input::all());
+		 $room->save($request->all());
 
-		return redirect('build/' . \Input::get('map_id'));
+		return redirect('build/' . $request->get('map_id'));
 
 	}
 
@@ -99,7 +99,7 @@ class RoomController extends Controller {
                                     ->first();
 
         if ($room == NULL) {
-            return redirect("build/create/$x/$y/$mapId");
+            return redirect("rooms/create/$x/$y/$mapId");
         }
 
         return redirect('rooms/' . $room->id . '/edit');
