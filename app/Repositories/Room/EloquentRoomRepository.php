@@ -20,12 +20,20 @@ class EloquentRoomRepository implements RoomRepositoryInterface {
         return Room::find($id);
     }
 
+    public function make() {
+        return new Room;
+    }
+
     public function create($x,$y,$description,$mapId) {
         return new Room($x,$y,$description,$mapId);
     }
 
     public function exists() {
         return Room::exists();
+    }
+
+    public function fill($vars){
+        return Room::fill($vars);
     }
 
 }

@@ -9,4 +9,6 @@ interface RoomRepositoryInterface {
     public function create($x, $y, $description, $mapId);
 
     public function where($column, $value, $operator);
+
+    public function fill($vars);
 }

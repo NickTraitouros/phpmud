@@ -40,10 +40,9 @@ class RoomController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-
-		 $room = new Room;
+		 $room = $this->room->make();
 		 $room->fill($request->input())->save();
-		 $room->save($request->all());
+//		 $room->save($request->all());
 
 		return redirect('build/' . $request->get('map_id'));
 
