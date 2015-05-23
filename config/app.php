@@ -145,7 +145,8 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'Orangehill\Iseed\IseedServiceProvider',
-		'Illuminate\Html\HtmlServiceProvider'
+		'Illuminate\Html\HtmlServiceProvider',
+		'App\Providers\RepositoriesServiceProvider',
 
 	],
 
