@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends Model {
+class Room extends Model{
 
     protected $fillable = ['description', 'x', 'y', 'map_id'];
 

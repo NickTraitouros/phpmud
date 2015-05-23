@@ -2,10 +2,15 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Repositories\RoomRepositoryInterface as Room;
 
 use Illuminate\Http\Request;
 
 class RoomController extends Controller {
+
+    public function __construct(Room $room) {
+        $this->room = $room;
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -14,7 +19,7 @@ class RoomController extends Controller {
 	 */
 	public function index()
 	{
-		return \App\Room::all();
+		return $this->room->all();
 	}
 
 	/**
@@ -23,7 +28,8 @@ class RoomController extends Controller {
 	 * @return Response
 	 */
 	public function create($x, $y, $mapId)
-	{	$room = new \App\Room($x,$y,NULL,$mapId);
+	{
+		$room = $this->room->create($x,$y,NULL,$mapId);
 		return \View::make('room/create', array('room'=>$room));
 	}
 
@@ -35,7 +41,7 @@ class RoomController extends Controller {
 	public function store(Request $request)
 	{
 
-		 $room = new \App\Room;
+		 $room = new Room;
 		 $room->fill($request->input())->save();
 		 $room->save($request->all());
 
@@ -51,7 +57,7 @@ class RoomController extends Controller {
 	 */
 	public function show($id)
 	{
-		$room = \App\Room::find($id);
+		$room = $this->room->find($id);
 		return \View::make('room/show', $room->toArray());
 	}
 
@@ -63,7 +69,7 @@ class RoomController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$room = \App\Room::find($id);
+		$room = $this->room->find($id);
 		return \View::make('room/edit', array('room'=>$room));
 
 	}
@@ -76,7 +82,7 @@ class RoomController extends Controller {
 	 */
 	public function update($id, Request $request)
 	{
-		$room = \App\Room::find($id);
+		$room = $this->room->find($id);
 		$room->fill($request->input())->save();
 		return redirect('build/' . $request->get('map_id'));	}
 
@@ -92,7 +98,7 @@ class RoomController extends Controller {
 	}
 
     public function getMappedRoom($x,$y,$mapId) {
-        $room = \App\Room::where('map_id','=',$mapId)
+        $room = $this->room->where('map_id','=',$mapId)
                                     ->where('x','=',$x)
                                     ->where('y','=',$y)
                                     ->first();
@@ -102,7 +108,6 @@ class RoomController extends Controller {
         }
 
         return redirect('rooms/' . $room->id . '/edit');
-
     }
 
 
