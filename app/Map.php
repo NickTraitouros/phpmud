@@ -15,29 +15,29 @@ class Map extends Model {
         foreach($this->rooms as $room) {
 
             if ($direction == 'N') {
-                if (($room->getX() == $currentRoom->getX() )
-                && ($room->getY() == $currentRoom->getY() - 1)) {
+                if (($room->x == $currentRoom->x )
+                && ($room->y == $currentRoom->y - 1)) {
                     return $room;
                 }
             }
 
             if ($direction == 'W') {
-                if (($room->getX() == $currentRoom->getX() - 1 )
-                && ($room->getY() == $currentRoom->getY())){
+                if (($room->x == $currentRoom->x - 1 )
+                && ($room->y == $currentRoom->y)){
                     return $room;
                 }
             }
 
             if ($direction == 'S') {
-                if (($room->getX() == $currentRoom->getX() )
-                && ($room->getY() == $currentRoom->getY()) + 1){
+                if (($room->x == $currentRoom->x )
+                && ($room->y == $currentRoom->y) + 1){
                     return $room;
                 }
             }
 
             if ($direction == 'E') {
-                if (($room->getX() == $currentRoom->getX() + 1 )
-                && ($room->getY() == $currentRoom->getY())){
+                if (($room->x == $currentRoom->x + 1 )
+                && ($room->y == $currentRoom->y)){
                     return $room;
                 }
             }

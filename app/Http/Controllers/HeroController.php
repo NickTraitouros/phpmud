@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class Hero extends Controller {
+class HeroController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -45,7 +45,9 @@ class Hero extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$hero = \App\Hero::find($id);
+		return View('hero', $hero->toArray());
+
 	}
 
 	/**

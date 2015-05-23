@@ -12,7 +12,8 @@ class HeroTest extends TestCase {
 	function setUp() {
         $mockLocation = \Mockery::mock('\App\Location');
 		$this->maxHitPoints = 1000;
-		$this->testHero = new \App\Hero($this->maxHitPoints,15, $mockLocation);
+		$this->testHero = new \App\Hero;
+        $this->testHero->assignAttributes($this->maxHitPoints,15, $mockLocation);
 	}
 
 	function testHeroDiesIfDamageTakenExceedsHitPoints() {

@@ -3,17 +3,24 @@
 use Illuminate\Database\Eloquent\Model;
 
 class Hero extends Model implements Fightable {
-    private $hitPoints;
-    private $strength;
-    private $maxHitPoints;
-    private $location;
 
-    function __construct($hitPoints, $strength, Location $location) {
+    protected $fillable = ['hitPoints',
+                            'strength',
+                        'maxHitPoints',
+                            'location',
+                                'name',
+                             'room_id'];
+
+    public function room() {
+         return $this->belongsTo('\App\Room');
+    }
+
+    function assignAttributes($hitPoints, $strength, Location $location) {
 
         $this->hitPoints = $hitPoints;
         $this->maxHitPoints = $hitPoints;
         $this->strength = $strength;
-        $this->location = $location;
+        $this->location = $location;  //app make location instead
 
     }
 

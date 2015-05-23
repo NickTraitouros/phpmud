@@ -17,6 +17,9 @@ class CreateHerosTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('name', 20);
+			$table->integer('hitPoints');
+			$table->integer('maxHitPoints');
+			$table->integer('strength');
 		});
 
 	}

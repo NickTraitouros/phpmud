@@ -4,26 +4,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model {
 
-    private $description;
-    private $x;
-    private $y;
+    protected $fillable = ['description', 'x', 'y', 'map_id'];
 
-    function __construct($x, $y, $description = NULL) {
+    function __construct($x = NULL, $y = NULL, $description = NULL, $mapId = NULL) {
         $this->description = $description;
         $this->x = $x;
         $this->y = $y;
+        $this->map_id = $mapId;
     }
-
-    public function getDescription() {
-        return $this->description;
-    }
-
-    public function getX() {
-        return $this->x;
-    }
-
-    public function getY() {
-        return $this->y;
-    }
-
 }
