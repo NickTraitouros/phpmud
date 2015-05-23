@@ -10,5 +10,7 @@ interface RoomRepositoryInterface {
 
     public function where($column, $value, $operator);
 
+    public function first();
+
     public function fill($vars);
 }

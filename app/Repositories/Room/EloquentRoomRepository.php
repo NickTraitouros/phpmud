@@ -32,6 +32,10 @@ class EloquentRoomRepository implements RoomRepositoryInterface {
         return Room::exists();
     }
 
+    public function first(){
+        return Room::first();
+    }
+
     public function fill($vars){
         return Room::fill($vars);
     }
