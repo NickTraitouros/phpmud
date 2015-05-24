@@ -15,7 +15,13 @@ class Hero extends Model implements Fightable {
          return $this->belongsTo('\App\Room');
     }
 
-    function assignAttributes($hitPoints, $strength, Location $location) {
+    public function getPerspective() {
+        $perspective = $this->room->getPerspective();
+        return \View::make('hero/perspective', array('description' => $perspective->getDescription()));
+
+    }
+
+    public function assignAttributes($hitPoints, $strength, Location $location) {
 
         $this->hitPoints = $hitPoints;
         $this->maxHitPoints = $hitPoints;

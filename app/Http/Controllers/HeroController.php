@@ -12,6 +12,11 @@ class HeroController extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function getPerspective($id){
+		$hero = \App\Hero::find($id);
+		return $hero->getPerspective();
+	}
+
 	public function index()
 	{
 		//

@@ -12,8 +12,11 @@
 */
 
 Route::resource('rooms', 'RoomController');
+
 Route::get('builder/rooms/show/{x}/{y}/{mapId}',   array('as'=>'getMappedRoom',   'uses'=>'RoomController@getMappedRoom'));
 Route::get('builder/rooms/create/{x}/{y}/{mapId}', array('as'=>'createMappedRoom','uses'=>'RoomController@create'));
+
+Route::get('hero/{id}/perspective', array('as'=>'getHeroPerspective', 'uses'=>'HeroController@getPerspective'));
 
 Route::get('/', 'WelcomeController@index');
 

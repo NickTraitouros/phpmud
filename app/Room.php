@@ -12,4 +12,19 @@ class Room extends Model{
         $this->y = $y;
         $this->map_id = $mapId;
     }
+
+    public function getPerspective(){
+
+        $perspective = \App::make('App\Perspective');
+        $perspective->setDescription($this->description);
+
+        return $perspective;
+
+           //get description
+           //get exits
+           //get npcs
+           //get items
+
+    }
+
 }

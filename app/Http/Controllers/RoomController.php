@@ -83,7 +83,8 @@ class RoomController extends Controller {
 	{
 		$room = $this->room->find($id);
 		$room->fill($request->input())->save();
-		return redirect('build/' . $request->get('map_id'));	}
+		return redirect('build/' . $request->get('map_id'));
+	}
 
 	/**
 	 * Remove the specified resource from storage.
@@ -108,6 +109,5 @@ class RoomController extends Controller {
 
         return redirect('rooms/' . $room->id . '/edit');
     }
-
 
 }
