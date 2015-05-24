@@ -1,1 +1,1 @@
-{!! $controls !!}{{$perspective}}
+{!! $controls !!}{!! $perspective !!}

@@ -43,7 +43,8 @@ class RoomController extends Controller {
 		 $room = $this->room->make();
 		 $room->x = (integer) $request->input('x');
 		 $room->y = (integer) $request->input('y');
-		 $room->map_id = (integer) $request->input('map_id');
+		 $room->map_id = $request->input('map_id');
+		 $room->description = $request->input('description');
 		 $room->save();
 		return redirect('build/' . $request->get('map_id'));
 
@@ -99,16 +100,19 @@ class RoomController extends Controller {
 	}
 
     public function getMappedRoom($x,$y,$mapId) {
-        $room = $this->room->where('map_id','=',$mapId)
-                                    ->where('x','=',$x)
-                                    ->where('y','=',$y)
-                                    ->first();
 
-        if ($room == NULL) {
+        $room = $this->room->where('map_id','=',$mapId)
+                                    ->where('x','=',(integer)$x)
+                                    ->where('y','=',(integer)$y)
+                                    ->get();
+//$queries = \DB::getQueryLog();
+//	dd($queries);
+
+        if ($room->isEmpty()) {
             return redirect("builder/rooms/create/$x/$y/$mapId");
         }
 
-        return redirect('rooms/' . $room->id . '/edit');
+        return redirect('rooms/' . $room->first()->_id . '/edit');
     }
 
 }

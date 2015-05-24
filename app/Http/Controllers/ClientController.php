@@ -13,7 +13,6 @@ class ClientController extends Controller {
 
     public function show($heroId) {
         $hero = \App\Hero::find($heroId);
-        dd($hero);
         $controlView = \View::make('client/controls', array('heroId' => $heroId));
 
         return \View::make('client/show', array('perspective' => $hero->getPerspective(),
@@ -27,6 +26,7 @@ class ClientController extends Controller {
         $map = $room->map;
 
         $adjacentRoom = $map->getAdjacentRoom($room, $direction);
+
         if ($adjacentRoom){
             if ($map->canMoveToNextRoom($room,$adjacentRoom)) {
                 $hero->room_id = $adjacentRoom->id;

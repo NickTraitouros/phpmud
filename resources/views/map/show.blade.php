@@ -4,7 +4,7 @@
 
 @for ($x = 0; $x < 10; $x++)
     @for ($y = 0; $y < 10; $y++)
-        <span onclick="showRoom({{$x}},{{$y}},1)"> <u>{{ $rows[$x][$y] }}</u> </span>
+        <span onclick="showRoom({{$x}},{{$y}},'{{$mapId}}')"> <u>{{ $rows[$x][$y] }}</u> </span>
     @endfor
     <br>
 @endfor

@@ -17,7 +17,7 @@ class MapController extends Controller {
         for($x=0;$x<10;$x++) {
             $columns = array();
             for($y=0;$y<10;$y++){
-                $room = ($this->room->where('map_id','=',(integer) $id)
+                $room = ($this->room->where('map_id','=', $id)
                                     ->where('x','=',$x)
                                     ->where('y','=',$y)
                                     ->get());
@@ -26,6 +26,6 @@ class MapController extends Controller {
             array_push($rows, $columns);
         }
 
-        return \View::make('map/show', array('rows' =>$rows));
+        return \View::make('map/show', array('rows' =>$rows, 'mapId'=>$id));
     }
 }

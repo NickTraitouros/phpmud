@@ -18,10 +18,15 @@ class Room extends Eloquent{
         $this->map_id = $mapId;
     }
 
+    public function getCharacters() {
+        return \App\Hero::where('room_id','=',$this->id)->get();
+    }
+
     public function getPerspective(){
 
         $perspective = \App::make('App\Perspective');
         $perspective->setDescription($this->description);
+        $perspective->setCharacters($this->getCharacters());
 
         return $perspective;
 
