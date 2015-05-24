@@ -1,1 +1,1 @@
-{{ $description }}
+{{ $description }} {{ $x }} {{ $y }}

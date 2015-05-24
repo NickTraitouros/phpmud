@@ -18,6 +18,9 @@ Route::get('builder/rooms/create/{x}/{y}/{mapId}', array('as'=>'createMappedRoom
 
 Route::get('hero/{id}/perspective', array('as'=>'getHeroPerspective', 'uses'=>'HeroController@getPerspective'));
 
+Route::get('client/{heroId}', array('as'=>'client', 'uses'=>'ClientController@show'));
+Route::get('client/move/{heroId}/{direction}', array('as'=>'clientMove', 'uses'=>'ClientController@move'));
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
@@ -25,7 +28,6 @@ Route::get('home', 'HomeController@index');
 Route::get('hero/{id}', 'HeroController@show');
 
 Route::get('build/{id}','MapController@showMap');
-
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

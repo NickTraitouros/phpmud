@@ -17,7 +17,9 @@ class Hero extends Model implements Fightable {
 
     public function getPerspective() {
         $perspective = $this->room->getPerspective();
-        return \View::make('hero/perspective', array('description' => $perspective->getDescription()));
+        return \View::make('hero/perspective', array('description' => $perspective->getDescription(),
+                                                     'x' => $this->room->x,
+                                                     'y' => $this->room->y));
 
     }
 

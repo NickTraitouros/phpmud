@@ -6,7 +6,12 @@ class Room extends Model{
 
     protected $fillable = ['description', 'x', 'y', 'map_id'];
 
+    public function map() {
+         return $this->belongsTo('\App\Map');
+    }
+
     function __construct($x = NULL, $y = NULL, $description = NULL, $mapId = NULL) {
+
         $this->description = $description;
         $this->x = $x;
         $this->y = $y;
