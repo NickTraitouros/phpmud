@@ -51,7 +51,7 @@ class Map extends Eloquent {
             $x = $room->x+1;
         }
 
-        return \App\Room::where('map_id','=',$mapId)
+        return $room->where('map_id','=',$mapId)
                                             ->where('x','=',$x)
                                             ->where('y','=',$y)
                                             ->first();

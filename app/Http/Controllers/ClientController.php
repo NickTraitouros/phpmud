@@ -12,27 +12,30 @@ class ClientController extends Controller {
     }
 
     public function show($heroId) {
-        $hero = \App\Hero::find($heroId);
+        $hero = \App::make('App\hero');
+        $player = $hero->find($heroId);
         $controlView = \View::make('client/controls', array('heroId' => $heroId));
 
-        return \View::make('client/show', array('perspective' => $hero->getPerspective(),
+        return \View::make('client/show', array('perspective' => $player->getPerspective(),
                                                 'controls'    => $controlView));
 
     }
 
     public function move($heroId, $direction) {
-        $hero = \App\Hero::find($heroId);
-        $room = $hero->room;
+
+        $hero = \App::make('App\hero');
+        $player = $hero->find($heroId);
+        $room = $player->room;
         $map = $room->map;
 
         $adjacentRoom = $map->getAdjacentRoom($room, $direction);
 
         if ($adjacentRoom){
             if ($map->canMoveToNextRoom($room,$adjacentRoom)) {
-                $hero->room_id = $adjacentRoom->id;
-                $hero->save();
+                $player->room_id = $adjacentRoom->id;
+                $player->save();
             }
         }
-        return redirect('client/' . $hero->id);
+        return redirect('client/' . $player->id);
     }
 }
