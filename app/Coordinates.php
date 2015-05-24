@@ -1,8 +1,9 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\ModelSwitcher\Model as Eloquent;
+//use Illuminate\Database\Eloquent\Model;
 
-class Coordinates extends Model {
+class Coordinates extends Eloquent {
 
     private $x;
     private $y;

@@ -147,6 +147,7 @@ return [
 		'Orangehill\Iseed\IseedServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		'App\Providers\RepositoriesServiceProvider',
+		'Jenssegers\Mongodb\MongodbServiceProvider',
 
 	],
 

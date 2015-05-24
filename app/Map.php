@@ -1,8 +1,8 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\ModelSwitcher\Model as Eloquent;
 
-class Map extends Model {
+class Map extends Eloquent {
 
     private $rooms;
 

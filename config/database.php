@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' => 'mongodb',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -45,6 +45,17 @@ return [
 	*/
 
 	'connections' => [
+		'mongodb' => array(
+		    'driver'   => 'mongodb',
+		    'host'     => 'localhost',
+		    'port'     => 27017,
+		    'username' => '',
+		    'password' => '',
+		    'database' => 'phpmud',
+		    'options' => array(
+		        'db' => 'admin' // sets the authentication database required by mongo 3
+		    )
+		),
 
 		'sqlite' => [
 			'driver'   => 'sqlite',

@@ -1,8 +1,8 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\ModelSwitcher\Model as Eloquent;
 
-class Room extends Model{
+class Room extends Eloquent{
 
     protected $fillable = ['description', 'x', 'y', 'map_id'];
 

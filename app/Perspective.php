@@ -1,8 +1,8 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\ModelSwitcher\Model as Eloquent;
 
-class Perspective extends Model {
+class Perspective extends Eloquent {
 
     private $description;
 

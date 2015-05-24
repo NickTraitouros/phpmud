@@ -1,9 +1,8 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\ModelSwitcher\Model as Eloquent;
 
-
-class Battle extends Model {
+class Battle extends Eloquent {
 
     function __construct(\App\Fightable $attacker, \App\Fightable $defender) {
         $this->defender = $defender;

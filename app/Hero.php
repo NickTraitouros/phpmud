@@ -1,8 +1,8 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\ModelSwitcher\Model as Eloquent;
 
-class Hero extends Model implements Fightable {
+class Hero extends Eloquent implements Fightable {
 
     protected $fillable = ['hitPoints',
                             'strength',

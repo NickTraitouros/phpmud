@@ -13,6 +13,7 @@ class ClientController extends Controller {
 
     public function show($heroId) {
         $hero = \App\Hero::find($heroId);
+        dd($hero);
         $controlView = \View::make('client/controls', array('heroId' => $heroId));
 
         return \View::make('client/show', array('perspective' => $hero->getPerspective(),
