@@ -24,12 +24,10 @@ class Hero extends Eloquent implements Fightable {
 
     }
 
-    public function assignAttributes($hitPoints, $strength, Location $location) {
-
+    public function assignAttributes($hitPoints, $strength) {
         $this->hitPoints = $hitPoints;
         $this->maxHitPoints = $hitPoints;
         $this->strength = $strength;
-        $this->location = $location;  //app make location instead
 
     }
 

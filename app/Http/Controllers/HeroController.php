@@ -13,9 +13,8 @@ class HeroController extends Controller {
 	 * @return Response
 	 */
 	public function getPerspective($id){
-		$hero = \App::make('App\Hero');
-		$player = $hero->find($id);
-		return $player->getPerspective();
+		$hero = \App::make('App\Hero')->find($id);
+		return $hero->getPerspective();
 	}
 
 	public function index()
@@ -51,9 +50,7 @@ class HeroController extends Controller {
 	 */
 	public function show($id)
 	{
-		$hero = \App\Hero::find($id);
-		return View('hero', $hero->toArray());
-
+		return View('hero', \App\Hero::find($id)->toArray());
 	}
 
 	/**

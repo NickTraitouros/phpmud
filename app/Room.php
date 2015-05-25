@@ -19,8 +19,7 @@ class Room extends Eloquent{
     }
 
     public function getCharacters() {
-        $hero = \App::make('App\Hero');
-        return $hero->where('room_id','=',$this->id)->get();
+        return \App::make('App\Hero')->where('room_id','=',$this->id)->get();
     }
 
     public function getPerspective(){
