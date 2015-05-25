@@ -148,6 +148,7 @@ return [
 		'Illuminate\Html\HtmlServiceProvider',
 		'App\Providers\RepositoriesServiceProvider',
 		'Jenssegers\Mongodb\MongodbServiceProvider',
+		'App\Providers\GuzzleServiceProvider',
 
 	],
 
@@ -197,7 +198,8 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'=> 'Illuminate\Html\FormFacade',
-		'HTML'=> 'Illuminate\Html\HtmlFacade'
+		'HTML'=> 'Illuminate\Html\HtmlFacade',
+		'Guzzle'    => 'App\Facades\Guzzle'
 
 	],
 
