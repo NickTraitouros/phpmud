@@ -16,16 +16,10 @@ class Map extends Eloquent {
             return false;
         }
 
-        if (($currentRoom->x == $nextRoom->x + 1) && ($currentRoom->y == $currentRoom->y)){
+        if (($currentRoom->x == (($nextRoom->x + 1) || ($nextRoom->x - 1))) && ($currentRoom->y == $currentRoom->y)) {
             return true;
         }
-        if (($currentRoom->x == $nextRoom->x - 1) && ($currentRoom->y == $currentRoom->y)){
-            return true;
-        }
-        if (($currentRoom->y == $nextRoom->y + 1) && ($currentRoom->x == $currentRoom->x)){
-            return true;
-        }
-        if (($currentRoom->y == $nextRoom->y - 1) && ($currentRoom->x == $currentRoom->x)){
+        if (($currentRoom->y == (($nextRoom->y + 1) || ($nextRoom->y - 1))) && ($currentRoom->x == $currentRoom->x)) {
             return true;
         }
 
@@ -39,16 +33,16 @@ class Map extends Eloquent {
         $y = $room->y;
 
         if ($direction == 'N') {
-            $y = $room->y-1;
+            $y--;
         }
-        if ($direction == 'S') {
-            $y = $room->y+1;
+        else if ($direction == 'S') {
+            $y++;
         }
-        if ($direction == 'W') {
-            $x = $room->x-1;
+        else if ($direction == 'W') {
+            $x--;
         }
-        if ($direction == 'E') {
-            $x = $room->x+1;
+        else if ($direction == 'E') {
+            $x++;
         }
 
         return $room->where('map_id','=',$mapId)
