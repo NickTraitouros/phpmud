@@ -16,10 +16,11 @@ class Map extends Eloquent {
             return false;
         }
 
-        if (($currentRoom->x == (($nextRoom->x + 1) || ($nextRoom->x - 1))) && ($currentRoom->y == $currentRoom->y)) {
+        if ((($currentRoom->x == $nextRoom->x + 1) || ($currentRoom->x == $nextRoom->x - 1)) && $currentRoom->y == $nextRoom->y) {
             return true;
         }
-        if (($currentRoom->y == (($nextRoom->y + 1) || ($nextRoom->y - 1))) && ($currentRoom->x == $currentRoom->x)) {
+
+        if ((($currentRoom->y == $nextRoom->y + 1) || ($currentRoom->y == $nextRoom->y - 1)) && $currentRoom->x == $nextRoom->x) {
             return true;
         }
 
