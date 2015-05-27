@@ -12,17 +12,18 @@ class MapController extends Controller {
         $this->room = $room;
     }
 
-    public function showMap($id) {
+    public function getMap($id, $x, $y) {
         $rows = array();
-        for($x=0;$x<10;$x++) {
+        for($i=0;$i<$x;$i++) {
             $columns = array();
-            for($y=0;$y<10;$y++){
+            for($j=0;$j<$y;$j++){
                 $room = ($this->room->where('map_id','=', $id)
-                                    ->where('x','=',$x)
-                                    ->where('y','=',$y)
+                                    ->where('x','=',$i)
+                                    ->where('y','=',$j)
                                     ->get());
                 array_push($columns, !$room->isEmpty() ? 1 : 0);
             }
+
             array_push($rows, $columns);
         }
 

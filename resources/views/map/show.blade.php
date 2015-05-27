@@ -2,8 +2,8 @@
 
 {!! HTML::script('js/mapBuilder.js') !!}
 
-@for ($x = 0; $x < 10; $x++)
-    @for ($y = 0; $y < 10; $y++)
+@for ($x = 0; $x < count($rows) - 1; $x++)
+    @for ($y = 0; $y < count($rows[$x]) - 1; $y++)
         <span onclick="showRoom({{$x}},{{$y}},'{{$mapId}}')"> <u>{{ $rows[$x][$y] }}</u> </span>
     @endfor
     <br>

@@ -28,7 +28,7 @@ Route::get('home', 'HomeController@index');
 
 Route::get('hero/{id}', 'HeroController@show');
 
-Route::get('build/{id}','MapController@showMap');
+Route::get('build/{id}/{x}/{y}','MapController@getMap');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
