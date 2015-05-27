@@ -12,11 +12,13 @@ class ClientController extends Controller {
     }
 
     public function show($heroId) {
+
         $hero = \App::make('App\hero');
         $player = $hero->find($heroId);
+
         $controlView = \View::make('client/controls', array('heroId' => $heroId));
 
-        return \View::make('client/show', array('perspective' => $player->getPerspective(),
+        return \View::make('client/show', array('perspective' => \View::make('hero/perspective',$player->getPerspective()),
                                                 'controls'    => $controlView));
 
     }

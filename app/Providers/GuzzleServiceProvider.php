@@ -8,7 +8,7 @@ class GuzzleServiceProvider extends ServiceProvider {
 
     public function register()
     {
-      $this->app->singleton('Guzzle',
+      $this->app->bind('Guzzle',
           function() {
             return new \GuzzleHttp\Client();
           });

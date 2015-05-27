@@ -13,8 +13,9 @@ class HeroController extends Controller {
 	 * @return Response
 	 */
 	public function getPerspective($id){
-		$hero = \App::make('App\Hero')->find($id);
-		return $hero->getPerspective();
+		return \Response::make(json_encode(\App::make('App\Hero')->find($id)->getPerspective()),
+			200,
+			['Content-Length' => 518]);
 	}
 
 	public function index()
