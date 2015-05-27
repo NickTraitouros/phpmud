@@ -14,16 +14,16 @@ class MapController extends Controller {
 
     public function getMap($id, $x, $y) {
         $rows = array();
-        for($i=0;$i<$x;$i++) {
-            $columns = array();
-            for($j=0;$j<$y;$j++){
+
+        for($j=0;$j<$y;$j++){
+           $columns = array();
+           for($i=0;$i<$x;$i++) {
                 $room = ($this->room->where('map_id','=', $id)
                                     ->where('x','=',$i)
                                     ->where('y','=',$j)
                                     ->get());
                 array_push($columns, !$room->isEmpty() ? 1 : 0);
             }
-
             array_push($rows, $columns);
         }
 
