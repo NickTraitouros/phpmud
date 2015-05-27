@@ -6,12 +6,13 @@
     {!! Form::text('description') !!}
 </div>
 <div>
-    {!! Form::label('x', 'x:' . $room->x) !!}
+
+{!! Form::label('X', 'X:' . $room->x) !!}
+{!! Form::label('Y', 'Y:' . $room->y) !!}
     {!! Form::hidden('x', $room->x) !!}
-</div>
-<div>
-    {!! Form::label('y', 'y:' . $room->y) !!}
     {!! Form::hidden('y', $room->y) !!}
+    {!! Form::hidden('rows', $rows) !!}
+    {!! Form::hidden('columns', $columns) !!}
 </div>
 <div>
     {!! Form::label('map_id', 'MapId:' . $room->map_id) !!}

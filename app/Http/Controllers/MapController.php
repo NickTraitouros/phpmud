@@ -12,20 +12,20 @@ class MapController extends Controller {
         $this->room = $room;
     }
 
-    public function getMap($id, $x, $y) {
-        $rows = array();
+    public function getMap($id, $showRows, $showColumns) {
+       $rows = array();
 
-        for($j=0;$j<$y;$j++){
+       for($x=0;$x<$showRows;$x++) {
            $columns = array();
-           for($i=0;$i<$x;$i++) {
+           for($y=0;$y<$showColumns;$y++) {
                 $room = ($this->room->where('map_id','=', $id)
-                                    ->where('x','=',$i)
-                                    ->where('y','=',$j)
+                                    ->where('x','=',$x)
+                                    ->where('y','=',$y)
                                     ->get());
                 array_push($columns, !$room->isEmpty() ? 1 : 0);
-            }
-            array_push($rows, $columns);
-        }
+           }
+        array_push($rows, $columns);
+       }
 
         return \View::make('map/show', array('rows' =>$rows, 'mapId'=>$id));
     }

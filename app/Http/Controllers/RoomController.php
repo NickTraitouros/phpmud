@@ -27,10 +27,10 @@ class RoomController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create($x, $y, $mapId)
+	public function create($x, $y, $mapId, $rows, $columns)
 	{
 		$room = $this->room->create($x,$y,NULL,$mapId);
-		return \View::make('room/create', array('room'=>$room));
+		return \View::make('room/create', array('room'=>$room, 'rows' => $rows, 'columns' => $columns));
 	}
 
 	/**
@@ -46,7 +46,9 @@ class RoomController extends Controller {
 		 $room->map_id = $request->input('map_id');
 		 $room->description = $request->input('description');
 		 $room->save();
-		return redirect('build/' . $request->get('map_id'));
+		return redirect('build/' . $request->get('map_id') . '/'
+							     . $request->get('rows') .'/'
+							     . $request->get('columns'));
 
 	}
 
@@ -68,11 +70,10 @@ class RoomController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($id, $rows, $columns)
 	{
 		$room = $this->room->find($id);
-		return \View::make('room/edit', array('room'=>$room));
-
+		return \View::make('room/edit', array('room'=>$room, 'rows'=>$rows, 'columns'=>$columns));
 	}
 
 	/**
@@ -85,8 +86,10 @@ class RoomController extends Controller {
 	{
 		$room = $this->room->find($id);
 		$room->fill($request->input())->save();
-		return redirect('build/' . $request->get('map_id'));
-	}
+
+		return redirect('build/' . $request->get('map_id') . '/'
+							     . $request->get('rows') .'/'
+							     . $request->get('columns'));	}
 
 	/**
 	 * Remove the specified resource from storage.
@@ -99,7 +102,7 @@ class RoomController extends Controller {
 		//
 	}
 
-    public function getMappedRoom($x,$y,$mapId) {
+    public function getMappedRoom($x,$y,$mapId,$rows,$columns) {
 
         $room = $this->room->where('map_id','=',$mapId)
                                     ->where('x','=',(integer)$x)
@@ -109,10 +112,10 @@ class RoomController extends Controller {
 //	dd($queries);
 
         if ($room->isEmpty()) {
-            return redirect("builder/rooms/create/$x/$y/$mapId");
+            return redirect("builder/rooms/create/$x/$y/$mapId/$rows/$columns");
         }
 
-        return redirect('rooms/' . $room->first()->_id . '/edit');
+        return redirect('rooms/' . $room->first()->_id . '/edit/' . $rows . '/' . $columns);
     }
 
 }

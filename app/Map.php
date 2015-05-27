@@ -51,6 +51,7 @@ class Map extends Eloquent {
                                             ->where('y','=',$y)
                                             ->first();
 
+
     }
 
 }

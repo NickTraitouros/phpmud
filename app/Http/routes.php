@@ -13,9 +13,10 @@
 \DB::connection()->enableQueryLog();
 
 Route::resource('rooms', 'RoomController');
+Route::get('rooms/{id}/edit/{rows}/{columns}', array('uses'=>'RoomController@edit'));
 
-Route::get('builder/rooms/show/{x}/{y}/{mapId}',   array('as'=>'getMappedRoom',   'uses'=>'RoomController@getMappedRoom'));
-Route::get('builder/rooms/create/{x}/{y}/{mapId}', array('as'=>'createMappedRoom','uses'=>'RoomController@create'));
+Route::get('builder/rooms/show/{x}/{y}/{mapId}/{rows}/{columns}',   array('as'=>'getMappedRoom',   'uses'=>'RoomController@getMappedRoom'));
+Route::get('builder/rooms/create/{x}/{y}/{mapId}/{rows}/{columns}', array('as'=>'createMappedRoom','uses'=>'RoomController@create'));
 
 Route::get('hero/{id}/perspective', array('as'=>'getHeroPerspective', 'uses'=>'HeroController@getPerspective'));
 
